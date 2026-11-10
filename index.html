@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>study guide</title>
+  <style>
+    /* Style the link to look like a button */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Visual style when the link has no destination */
+    .btn[href=""] {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="password" id="passwordInput" placeholder="Enter password">
+  <a href="" id="secretButton" class="btn">Continue</a>
+
+  <script>
+    const passwordInput = document.getElementById('passwordInput');
+    const secretButton = document.getElementById('secretButton');
+    const targetUrl = 'menu.html';
+
+    // Listen for typing in the password field
+    passwordInput.addEventListener('input', function () {
+      if (passwordInput.value === 'GEORGESIMPSON') {
+        secretButton.setAttribute('href', targetUrl);
+      } else {
+        secretButton.setAttribute('href', '');
+      }
+    });
+
+    // Prevent page reload if clicked while href is blank
+    secretButton.addEventListener('click', function (event) {
+      if (!secretButton.getAttribute('href')) {
+        event.preventDefault();
+      }
+    });
+  </script>
+
+</body>
+</html>
